@@ -1,0 +1,46 @@
+h1 {
+    border: solid 1px red;
+}
+
+.container {
+  border-collapse: collapse;
+  border: 2px solid #e9ebf8;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  color: #fffaff;
+  letter-spacing: 1px;
+}
+
+thead {
+    background-color: #182825;
+}
+
+th, td {
+    border: 1px solid #fffaff;
+    padding: 8px 10px;
+}
+
+td:last-of-type {
+  text-align: center;
+}
+
+tbody > tr:nth-of-type(odd) {
+  background-color: #db504a;
+}
+
+tbody > tr:nth-of-type(even) {
+  background-color: #016fb9;
+}
+
+.card {
+    background-color: #e9ebf8;
+    border: solid 1px #182825;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 200px;
+    height: 300px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+}
