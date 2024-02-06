@@ -37,8 +37,6 @@ myLibrary.forEach((book) => {
     cellPage.textContent = book.page
 
     book.read === false ? cellRead.textContent = "No" : cellRead.textContent = "Yes"
-
-    console.log(book.read ? 'Yes' : "no")
 })
 
 Book.prototype.introduce = function() {
