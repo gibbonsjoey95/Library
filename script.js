@@ -34,7 +34,7 @@ function Book(title, author, page, read) {
 
 
 const addBookToLibrary = () => {
-    // bookContainer.remove()
+    bookContainer.textContent = ''
 
     myLibrary.forEach((book) => {
         let row = bookContainer.insertRow(0)
