@@ -1,6 +1,7 @@
 const addBtn = document.querySelector('#addBtn')
 const bookContainer = document.querySelector('#bookContainer')
-
+const modal = document.querySelector('.modal')
+const closeModal = document.querySelector('.close')
 
 const myLibrary = [
     {
@@ -46,6 +47,10 @@ Book.prototype.introduce = function() {
 book1 = new Book('Eragon', 'Yada', 300, 'I have not read this book.')
 
 addBtn.addEventListener('click', () => {
-    book1.introduce()
+    modal.style.display = 'block'
+})
+
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none'
 })
 

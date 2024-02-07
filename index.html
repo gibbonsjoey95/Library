@@ -23,7 +23,7 @@
         </tbody>
     </table>
 
-    <form id="form" class="not-active" action="">
+    <!-- <form id="form" class="not-active" action="">
         <ul>
             <li>
                 <label for="title">Title:</label>
@@ -31,9 +31,31 @@
             </li>
             <li>
                 <label for="author">Author:</label>
+                <input type="text" id="author">
             </li>
         </ul>
+    </form> -->
+
+    <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <!-- <span class="close" onclick="closeModal()">&times;</span> -->
+    <button class="close">&times;</button>
+    <form id="bookForm">
+      <label for="title">Title:</label><br>
+      <input type="text" id="title" name="title"><br>
+      <label for="author">Author:</label><br>
+      <input type="text" id="author" name="author"><br>
+      <label for="pages">Number of Pages:</label><br>
+      <input type="number" id="pages" name="pages"><br>
+      <input type="checkbox" id="read" name="read">
+      <label for="read">Have you read this book?</label><br><br>
+      <input type="submit" value="Submit">
     </form>
+  </div>
+
+</div>
 
     <script src="script.js"></script>
 </body>
