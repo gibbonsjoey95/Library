@@ -31,7 +31,7 @@ function Book(title, author, page, read) {
     this.page = page
     this.read = read
 }
-
+ 
 
 const addBookToLibrary = () => {
     bookContainer.textContent = ''
@@ -43,15 +43,31 @@ const addBookToLibrary = () => {
         let cellAuthor = row.insertCell(1)
         let cellPage = row.insertCell(2)
         let cellRead = row.insertCell(3)
+        let removeBtn = row.insertCell(4)
+        
+        cellRead.classList.add('btn')
         
         cellTitle.textContent = book.title
         cellAuthor.textContent = book.author
         cellPage.textContent = book.page
         
+        cellRead.addEventListener('click', () => {
+            // book.read === false ? book.read = true : book.read = false
+           book.read = !book.read 
+
+
+            book.read === false ? cellRead.textContent = 'No' : cellRead.textContent = 'Yes'
+        })
+
+        const deleteButton = document.createElement('button')
+        deleteButton.textContent = 'Delete Book'
+        deleteButton.addEventListener('click', () => {
+            console.log(book)
+        })
+        removeBtn.appendChild(deleteButton)
+
         book.read === false ? cellRead.textContent = "No" : cellRead.textContent = "Yes"
     })
-
-    console.log('yes??')
 }
 
 
