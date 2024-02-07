@@ -74,6 +74,7 @@ bookForm.addEventListener('submit', (e) => {
     myLibrary.push(newBook)
     addBookToLibrary()
 
+    bookForm.reset()
     modal.style.display = 'none'
 })
 
