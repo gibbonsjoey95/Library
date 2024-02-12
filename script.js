@@ -8,22 +8,7 @@ const author = document.querySelector('#author')
 const pages = document.querySelector('#pages')
 const read = document.querySelector('#read')
 
-// const tableBody = document.querySelector('#table_of_items tr')
-
-const myLibrary = [
-    {
-        title: "Fahrenheit 451",
-        author: "Ray Bradbury",
-        page: 249,
-        read: false
-    },
-    {
-        title: "Running Out Of Time",
-        author: "Margaret Peterson Haddix",
-        page: 184,
-        read: true
-    }
-]
+const myLibrary = []
 
 function Book(title, author, page, read) {
     this.title = title
@@ -34,47 +19,70 @@ function Book(title, author, page, read) {
  
 
 const addBookToLibrary = () => {
-    bookContainer.textContent = ''
+    clearBookContainer()
 
     myLibrary.forEach((book) => {
-        let row = bookContainer.insertRow(0)
-        
-        let cellTitle = row.insertCell(0)
-        let cellAuthor = row.insertCell(1)
-        let cellPage = row.insertCell(2)
-        let cellRead = row.insertCell(3)
-        let removeBtn = row.insertCell(4)
-        
-        cellRead.classList.add('btn')
-        
-        cellTitle.textContent = book.title
-        cellAuthor.textContent = book.author
-        cellPage.textContent = book.page
-        
-        cellRead.addEventListener('click', () => {
-           book.read = !book.read 
-
-
-            book.read === false ? cellRead.textContent = 'No' : cellRead.textContent = 'Yes'
-        })
-
-        const deleteButton = document.createElement('button')
-        deleteButton.textContent = 'Delete Book'
-        deleteButton.addEventListener('click', () => {
-            // console.log(book)
-            let index = myLibrary.indexOf(book)
-
-            if(index !== -1){
-                myLibrary.splice(index, 1)
-                addBookToLibrary()
-            }
-
-            console.log('index', index)
-        })
-        removeBtn.appendChild(deleteButton)
-
-        book.read === false ? cellRead.textContent = "No" : cellRead.textContent = "Yes"
+        const row = createBookRow(book)
+        bookContainer.append(row)
     })
+}
+
+const clearBookContainer = () => {
+    bookContainer.textContent = ''
+}
+
+const createBookRow = (book) => {
+    const row = document.createElement('tr')
+
+    const cells = [
+        createCell(book.title),
+        createCell(book.author),
+        createCell(book.page),
+        createReadCell(book),
+        createRemoveButtonCell(book)
+    ]
+
+    cells.forEach((cell) => row.appendChild(cell))
+
+    return row
+}
+
+const createCell = (text) => {
+    const cell = document.createElement('td')
+    cell.textContent = text
+    return cell
+}
+
+const createReadCell = (book) => {
+    const cell = document.createElement('td')
+
+    cell.classList.add('btn')
+    cell.textContent = book.read ? 'Yes' : 'No'
+    cell.addEventListener('click', () => {
+        book.read = !book.read
+        cell.textContent = book.read ? 'Yes' : 'No'
+    })
+    return cell
+}
+
+const createRemoveButtonCell = (book) => {
+    const cell = document.createElement('td')
+    const deleteButton = document.createElement('button')
+    deleteButton.textContent = 'Delete'
+    deleteButton.addEventListener('click', () => {
+        removeBook(book)
+    })
+    cell.appendChild(deleteButton)
+    return cell
+}
+
+const removeBook = (book) => {
+    let index = myLibrary.indexOf(book)
+
+    if(index !== -1){
+        myLibrary.splice(index, 1)
+        addBookToLibrary()
+    }
 }
 
 addBtn.addEventListener('click', () => {

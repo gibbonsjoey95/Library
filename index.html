@@ -10,23 +10,24 @@
     <h1>My Library</h1>
 
     <button class="btn" id="addBtn">Add a book</button>
-    <table class="container">
-        <thead>
-            <tr>
+    <div class="table-container">
+        <table class="container">
+            <thead>
+                <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Author</th>
                 <th scope="col">Page Count</th>
-                <th scope="col">Read?</th>
-            </tr>
-        </thead>
-        <tbody id="bookContainer">
-        </tbody>
-    </table>
+                <th scope="col">Read? (click to change)</th>
+                <th scope="col">Delete Book</th>
+                </tr>
+            </thead>
+            <tbody id="bookContainer">
+            </tbody>
+        </table>
+    </div>
 
     <div id="myModal" class="modal">
-    <!-- Modal content -->
     <div class="modal-content">
-        <!-- <span class="close" onclick="closeModal()">&times;</span> -->
         <button class="close">&times;</button>
         <form id="bookForm">
         <label for="title">Title:</label><br>
