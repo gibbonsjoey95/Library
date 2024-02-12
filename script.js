@@ -52,7 +52,6 @@ const addBookToLibrary = () => {
         cellPage.textContent = book.page
         
         cellRead.addEventListener('click', () => {
-            // book.read === false ? book.read = true : book.read = false
            book.read = !book.read 
 
 
@@ -62,17 +61,20 @@ const addBookToLibrary = () => {
         const deleteButton = document.createElement('button')
         deleteButton.textContent = 'Delete Book'
         deleteButton.addEventListener('click', () => {
-            console.log(book)
+            // console.log(book)
+            let index = myLibrary.indexOf(book)
+
+            if(index !== -1){
+                myLibrary.splice(index, 1)
+                addBookToLibrary()
+            }
+
+            console.log('index', index)
         })
         removeBtn.appendChild(deleteButton)
 
         book.read === false ? cellRead.textContent = "No" : cellRead.textContent = "Yes"
     })
-}
-
-
-Book.prototype.introduce = function() {
-    console.log(`${this.title} by ${this.author}, ${this.page} pages. ${this.read}`)
 }
 
 addBtn.addEventListener('click', () => {
@@ -87,7 +89,7 @@ bookForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
     let newBook = new Book(title.value, author.value, pages.value, read.checked)
-    myLibrary.push(newBook)
+    myLibrary.unshift(newBook)
     addBookToLibrary()
 
     bookForm.reset()
