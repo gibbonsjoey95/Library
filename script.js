@@ -10,13 +10,6 @@ const read = document.querySelector('#read')
 
 const myLibrary = []
 
-// function Book(title, author, page, read) {
-//     this.title = title
-//     this.author = author
-//     this.page = page
-//     this.read = read
-// }
-
 class Book {
     constructor(title, author, page, read){
         this.title = title;
