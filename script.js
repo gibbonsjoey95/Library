@@ -25,6 +25,7 @@ const addBookToLibrary = () => {
     myLibrary.forEach((book) => {
         const row = createBookRow(book)
         bookContainer.append(row)
+
     })
 }
 
@@ -59,9 +60,26 @@ const createReadCell = (book) => {
 
     cell.classList.add('btn')
     cell.textContent = book.read ? 'Yes' : 'No'
+    
+    if(book.read){
+        cell.classList.add('green')
+        cell.classList.remove('red')
+    } else {
+        cell.classList.add('red')
+        cell.classList.remove('green')
+    }
+
     cell.addEventListener('click', () => {
         book.read = !book.read
         cell.textContent = book.read ? 'Yes' : 'No'
+        
+        if(book.read){
+            cell.classList.add('green')
+            cell.classList.remove('red')
+        } else {
+            cell.classList.add('red')
+            cell.classList.remove('green')
+        }
     })
     return cell
 }
@@ -98,7 +116,6 @@ bookForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
     let newBook = new Book(title.value, author.value, pages.value, read.checked)
-    // myLibrary.unshift(newBook)
     myLibrary.push(newBook)
     addBookToLibrary()
 
