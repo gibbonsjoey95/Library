@@ -98,7 +98,8 @@ bookForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
     let newBook = new Book(title.value, author.value, pages.value, read.checked)
-    myLibrary.unshift(newBook)
+    // myLibrary.unshift(newBook)
+    myLibrary.push(newBook)
     addBookToLibrary()
 
     bookForm.reset()
